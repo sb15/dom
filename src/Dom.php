@@ -86,14 +86,13 @@ class Dom
     }
 
     /**
-     * @param string|UriInterface $uri
-     * @param string|UriInterface $baseUri
+     * @param $uri
      * @return string
      */
-    public static function resolveUri($uri, $baseUri)
+    public function resolveUri($uri)
     {
-        $formUri = Psr7\uri_for($uri === null ? '' : $uri);
-        return (string) Psr7\UriResolver::resolve(Psr7\uri_for($baseUri), $formUri);
+        $rel = Psr7\uri_for($uri === null ? '' : $uri);
+        return (string) Psr7\UriResolver::resolve(Psr7\uri_for($this->getUrl()), $rel);
     }
 
     public function __toString()
