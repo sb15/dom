@@ -11,8 +11,12 @@ class Dom
     private $dom;
     private $url;
 
-    public function __construct($html, $url)
+    public function __construct($html, $url, $encoding = 'UTF-8')
     {
+        if ($encoding !== 'UTF-8') {
+            $html = mb_convert_encoding($html, 'UTF-8', $encoding);
+        }
+
         $this->dom = HtmlDomParser::str_get_html($html);
         $this->url = $url;
     }
