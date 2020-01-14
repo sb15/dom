@@ -18,7 +18,7 @@
     },
     "require": {
         "ext-mbstring": "*",
-        "sb15/simple-html-dom-parser-php": "^1.0",
+        "simplehtmldom/simplehtmldom": "2.0-RC2",
         "guzzlehttp/psr7": "^1.4"
     },
     "require-dev": {

@@ -2,9 +2,8 @@
 
 namespace Sb;
 
-use Psr\Http\Message\UriInterface;
-use Sunra\PhpSimple\HtmlDomParser;
 use GuzzleHttp\Psr7;
+use simplehtmldom\HtmlDocument;
 
 class Dom
 {
@@ -17,7 +16,7 @@ class Dom
             $html = mb_convert_encoding($html, 'UTF-8', $encoding);
         }
 
-        $this->dom = HtmlDomParser::str_get_html($html);
+        $this->dom = new HtmlDocument($html);
         $this->url = $url;
     }
 
@@ -34,11 +33,6 @@ class Dom
         return $this->__toString();
     }
 
-    /**
-     * @param $selector
-     * @param \simple_html_dom_node|null $dom
-     * @return \simple_html_dom_node[]
-     */
     public function find($selector, $dom = null)
     {
         if (null === $dom) {
@@ -52,11 +46,6 @@ class Dom
         return $dom->find($selector);
     }
 
-    /**
-     * @param $selector
-     * @param \simple_html_dom_node|null $dom
-     * @return \simple_html_dom_node
-     */
     public function findFirst($selector, $dom = null)
     {
         if (null === $dom) {
@@ -70,12 +59,6 @@ class Dom
         return $dom->find($selector, 0);
     }
 
-    /**
-     * @param $selector
-     * @param \simple_html_dom_node $dom
-     * @param int $idx
-     * @return \simple_html_dom_node
-     */
     public function findNElement($selector, $idx, $dom = null)
     {
         if (null === $dom) {
@@ -99,6 +82,9 @@ class Dom
         return (string) Psr7\UriResolver::resolve(Psr7\uri_for($this->getUrl()), $rel);
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         if (!$this->dom) {
