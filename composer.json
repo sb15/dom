@@ -21,7 +21,20 @@
     },
     "require": {
         "ext-mbstring": "*",
-        "simplehtmldom/simplehtmldom": "2.0-RC2 as 2.0.0",
+        "simplehtmldom/simplehtmldom": "1.9.1",
         "guzzlehttp/psr7": "^1.4"
-    }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "simplehtmldom/simplehtmldom",
+                "version": "1.9.1",
+                "dist": {
+                    "url": "https://github.com/simplehtmldom/simplehtmldom/archive/1.9.1.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ]
 }
