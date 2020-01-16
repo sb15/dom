@@ -4,6 +4,7 @@ namespace Sb;
 
 use GuzzleHttp\Psr7;
 use simplehtmldom\HtmlDocument;
+use simplehtmldom\HtmlNode;
 
 class Dom
 {
@@ -28,11 +29,19 @@ class Dom
         return $this->url;
     }
 
+    /**
+     * @return string
+     */
     public function getHtml()
     {
         return $this->__toString();
     }
 
+    /**
+     * @param $selector
+     * @param null $dom
+     * @return HtmlNode[]|null
+     */
     public function find($selector, $dom = null)
     {
         if (null === $dom) {
@@ -46,6 +55,11 @@ class Dom
         return $dom->find($selector);
     }
 
+    /**
+     * @param $selector
+     * @param null $dom
+     * @return HtmlNode|null
+     */
     public function findFirst($selector, $dom = null)
     {
         if (null === $dom) {
@@ -59,6 +73,12 @@ class Dom
         return $dom->find($selector, 0);
     }
 
+    /**
+     * @param $selector
+     * @param $idx
+     * @param null $dom
+     * @return HtmlNode|null
+     */
     public function findNElement($selector, $idx, $dom = null)
     {
         if (null === $dom) {
