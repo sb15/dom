@@ -22,6 +22,6 @@
     "require": {
         "ext-mbstring": "*",
         "simplehtmldom/simplehtmldom": "2.0-RC2 as 2.0.0",
-        "guzzlehttp/psr7": "^1.4"
+        "guzzlehttp/psr7": "*"
     }
 }
